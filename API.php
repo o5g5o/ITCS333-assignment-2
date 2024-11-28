@@ -1,11 +1,12 @@
 <?php
 // Step 1: API Endpoint URL
 $apiUrl = "https://data.gov.bh/api/explore/v2.1/catalog/datasets/01-statistics-of-students-nationalities_updated/records?where=colleges%20like%20%22IT%22%20AND%20the_programs%20like%20%22bachelor%22&limit=100";
+$error = "";
 
 try {
     // Step 2: Fetch data from API
     $response = file_get_contents($apiUrl);
-    
+
     // Check if response is not false
     if ($response === false) {
         throw new Exception("Failed to fetch data from API.");
@@ -32,6 +33,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,30 +46,36 @@ try {
             padding: 0;
             color: #333;
         }
+
         header {
             background: #2c3e50;
             color: white;
             padding: 1.5rem 1rem;
             text-align: center;
         }
+
         header h1 {
             margin: 0;
             font-size: 2rem;
         }
+
         header p {
             margin: 0.5rem 0 0;
             font-size: 1rem;
         }
+
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 1rem;
         }
+
         .error {
             color: red;
             text-align: center;
             font-size: 1.2rem;
         }
+
         .table-wrapper {
             overflow-x: auto;
             border-radius: 8px;
@@ -75,46 +83,59 @@ try {
             padding: 1rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         table {
             width: 100%;
             border-spacing: 0;
             border-collapse: separate;
         }
+
         table thead {
             background: #34495e;
             color: white;
         }
-        table th, table td {
+
+        table th,
+        table td {
             text-align: center;
             padding: 0.75rem;
             border-bottom: 1px solid #ddd;
         }
-        table th:first-child, table td:first-child {
+
+        table th:first-child,
+        table td:first-child {
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
         }
-        table th:last-child, table td:last-child {
+
+        table th:last-child,
+        table td:last-child {
             border-top-right-radius: 8px;
             border-bottom-right-radius: 8px;
         }
+
         table tbody tr:nth-child(even) {
             background: #f9f9f9;
         }
+
         table tbody tr:hover {
             background: #f1f1f1;
         }
+
         footer {
             background: #2c3e50;
             color: white;
             text-align: center;
             padding: 1rem;
         }
+
         footer a {
             color: #ecf0f1;
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>University of Bahrain: Student Demographics</h1>
@@ -158,4 +179,5 @@ try {
         <p>Data powered by <a href="https://data.gov.bh" target="_blank">Bahrain Open Data Portal</a></p>
     </footer>
 </body>
+
 </html>
