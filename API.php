@@ -30,7 +30,6 @@ try {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,126 +37,125 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UOB Student Nationalities</title>
     <style>
-       /* General Styling */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-/* Header and Footer */
-header, footer {
-    width: 100%; /* Full width */
-    padding: 1rem;
-    background: #444;
-    color: white;
-    text-align: center;
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-main {
-    max-width: 1200px; /* Center content */
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-thead {
-    background-color: #333;
-    color: #fff;
-}
-
-th, td {
-    padding: 0.75rem;
-    text-align: center;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-td {
-    color: #555;
-}
-
-.error {
-    color: red;
-    text-align: center;
-}
-
-footer a {
-    color: #0056D2;
-    text-decoration: underline;
-}
-
-footer a:hover {
-    color: #cccccc;
-}
-
-
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 8px;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-spacing: 0;
+            border-collapse: separate;
+        }
+        table thead {
+            background: #34495e;
+            color: white;
+        }
+        table th, table td {
+            text-align: center;
+            padding: 0.75rem;
+            border-bottom: 1px solid #ddd;
+        }
+        table th:first-child, table td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        table th:last-child, table td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        table tbody tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        table tbody tr:hover {
+            background: #f1f1f1;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        footer a {
+            color: #ecf0f1;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>University of Bahrain Student Enrollment</h1>
-        <p>A comprehensive view of student demographics in the IT College.</p>
+        <h1>University of Bahrain: Student Demographics</h1>
+        <p>Data on IT College Students in Bachelor Programs</p>
     </header>
     <main>
-        <?php if (!empty($records)): ?>
-            <!-- Responsive Table -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>Semester</th>
-                        <th>The Programs</th>
-                        <th>Nationality</th>
-                        <th>Colleges</th>
-                        <th>Number of Students</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($records as $record): ?>
+        <?php if ($error): ?>
+            <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php elseif (!empty($records)): ?>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
                         <tr>
-                            <td data-label="Year"><?= htmlspecialchars($record['year'] ?? 'N/A') ?></td>
-                            <td data-label="Semester"><?= htmlspecialchars($record['semester'] ?? 'N/A') ?></td>
-                            <td data-label="The Programs"><?= htmlspecialchars($record['the_programs'] ?? 'N/A') ?></td>
-                            <td data-label="Nationality"><?= htmlspecialchars($record['nationality'] ?? 'N/A') ?></td>
-                            <td data-label="Colleges"><?= htmlspecialchars($record['colleges'] ?? 'N/A') ?></td>
-                            <td data-label="Number of Students"><?= htmlspecialchars($record['number_of_students'] ?? 'N/A') ?></td>
+                            <th>Year</th>
+                            <th>Semester</th>
+                            <th>Program</th>
+                            <th>Nationality</th>
+                            <th>College</th>
+                            <th>Students</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($records as $record): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($record['year'] ?? 'N/A') ?></td>
+                                <td><?= htmlspecialchars($record['semester'] ?? 'N/A') ?></td>
+                                <td><?= htmlspecialchars($record['the_programs'] ?? 'N/A') ?></td>
+                                <td><?= htmlspecialchars($record['nationality'] ?? 'N/A') ?></td>
+                                <td><?= htmlspecialchars($record['colleges'] ?? 'N/A') ?></td>
+                                <td><?= htmlspecialchars($record['number_of_students'] ?? 'N/A') ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php else: ?>
             <p class="error">No data available to display. Please try again later.</p>
         <?php endif; ?>
     </main>
     <footer>
-        <p>API Data Powered by <a href="https://data.gov.bh" target="_blank">Bahrain Open Data Portal</a></p>
+        <p>Data powered by <a href="https://data.gov.bh" target="_blank">Bahrain Open Data Portal</a></p>
     </footer>
 </body>
 </html>
