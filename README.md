@@ -2,7 +2,7 @@
 
  
 ## Objective
-This project aims to create a PHP application that retrieves and visualizes UOB student nationality data from the Bahrain Open Data Portal using their public API.
+This project aims to create a PHP application that retrieves and visualizes University of Bahrain (UOB) student nationality data from the Bahrain Open Data Portal using their public API.
 
 ## Features
 - Retrieve student data from the API endpoint.
@@ -11,11 +11,12 @@ This project aims to create a PHP application that retrieves and visualizes UOB 
 
 ## Dataset
 **University of Bahrain Students Enrollment by Nationality**  
-Dataset URL: [Bahrain Open Data Portal](https://data.gov.bh/api/explore/v2.1/catalog/datasets/01-statistics-of-students-nationalities_updated/records?where=colleges%20like%20%22IT%22%20AND%20the_programs%20like%20%22bachelor%22&limit=100)
+Dataset API Endpoint: [Bahrain Open Data Portal](https://data.gov.bh/api/explore/v2.1/catalog/datasets/01-statistics-of-students-nationalities_updated/records?where=colleges%20like%20%22IT%22%20AND%20the_programs%20like%20%22bachelor%22&limit=100)
 
 ## Technologies Used
 - **PHP**: For data retrieval and processing.
-- **HTML & CSS**: For data visualization and responsive design.
+- **HTML**: For content structure and table creation.
+- **CSS**: For styling and responsive design.
 
 ## Steps to Run the Project
 1. Clone the repository:
